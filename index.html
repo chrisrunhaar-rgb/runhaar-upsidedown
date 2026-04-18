@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runhaar Upsidedown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #1a1a1a;
+      --muted: #6b6b6b;
+      --rule: #e0e0e0;
+      --bg: #faf9f7;
+      --white: #ffffff;
+      --warm: #f5f3ef;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .site-title {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    nav a:hover { color: var(--ink); }
+
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .lang-toggle button {
+      background: none;
+      border: none;
+      padding: 0.3rem 0.7rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-toggle button.active {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 5rem 3rem 4rem;
+      max-width: 760px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* ── BLOG GRID ── */
+    .blog-section {
+      padding: 4rem 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .post-card {
+      background: var(--white);
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: background 0.15s;
+    }
+
+    .post-card:hover {
+      background: var(--warm);
+    }
+
+    .post-date {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .post-title {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    .post-excerpt {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      background: var(--ink);
+      color: var(--white);
+      padding: 4rem 3rem;
+    }
+
+    .newsletter-inner {
+      max-width: 520px;
+    }
+
+    .newsletter .section-label {
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 1rem;
+    }
+
+    .newsletter h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .newsletter p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.75rem 1rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.35); }
+    .newsletter-form input:focus { border-color: rgba(255,255,255,0.4); }
+
+    .newsletter-form button {
+      padding: 0.75rem 1.5rem;
+      background: var(--white);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      cursor: pointer;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    .newsletter-form button:hover { opacity: 0.88; }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 4rem 3rem;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .about p {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .about p:last-child { margin-bottom: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.5rem 3rem;
+      border-top: 1px solid var(--rule);
+      background: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .social-links a {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .social-links a:hover { color: var(--ink); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 680px) {
+      header { padding: 0 1.5rem; }
+      nav { display: none; }
+      .hero, .blog-section, .newsletter, .about { padding-left: 1.5rem; padding-right: 1.5rem; }
+      footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+      .about { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ── LANG ── */
+    [data-lang] { display: none; }
+    .lang-nl [data-lang="nl"] { display: block; }
+    .lang-nl [data-lang="nl"].inline { display: inline; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-en [data-lang="en"].inline { display: inline; }
+  </style>
+</head>
+<body class="lang-nl">
+
+  <!-- HEADER -->
+  <header>
+    <a href="/" class="site-title">Runhaar Upsidedown</a>
+    <nav>
+      <a href="#blog" data-lang="nl">Blog</a>
+      <a href="#blog" data-lang="en">Blog</a>
+      <a href="#nieuwsbrief" data-lang="nl">Nieuwsbrief</a>
+      <a href="#nieuwsbrief" data-lang="en">Newsletter</a>
+      <a href="#over-ons" data-lang="nl">Over ons</a>
+      <a href="#over-ons" data-lang="en">About us</a>
+      <div class="lang-toggle">
+        <button id="btn-nl" class="active" onclick="setLang('nl')">NL</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Runhaar Upsidedown</p>
+    <h1 data-lang="nl">In het Koninkrijk<br>staat alles op zijn kop.</h1>
+    <h1 data-lang="en">In the Kingdom,<br>everything is upside down.</h1>
+    <p data-lang="nl">
+      Chris en Gerrianne Runhaar schrijven over hun leven, geloof en avonturen
+      in Penang en Azië — vanuit het bijbelse principe dat in Gods Koninkrijk
+      de dingen anders zijn dan de wereld verwacht.
+    </p>
+    <p data-lang="en">
+      Chris and Gerrianne Runhaar write about their life, faith, and adventures
+      in Penang and Asia — rooted in the biblical principle that in God's Kingdom,
+      things are the opposite of what the world expects.
+    </p>
+  </section>
+
+  <!-- BLOG -->
+  <section class="blog-section" id="blog">
+    <div class="section-header">
+      <span class="section-label" data-lang="nl">Recente Blogs</span>
+      <span class="section-label" data-lang="en">Recent Posts</span>
+    </div>
+
+    <div class="blog-grid">
+
+      <a class="post-card" href="https://www.runhaarupsidedown.nl/blog" target="_blank">
+        <p class="post-date">16 apr 2026</p>
+        <h2 class="post-title">Time is a funny thing!</h2>
+        <p class="post-excerpt" data-lang="nl">Wanneer moet jij weer een nieuwe aanvragen? Op je paspoort staat de datum waarop je deze hebt ontvangen en tot wanneer hij geldig is...</p>
+        <p class="post-excerpt" data-lang="en">When do you need to renew yours? Your passport shows the date it was issued and how long it's valid for...</p>
+      </a>
+
+      <a class="post-card" href="https://www.runhaarupsidedown.nl/blog" target="_blank">
+        <p class="post-date">28 jan 2026</p>
+        <h2 class="post-title">Start</h2>
+        <p class="post-excerpt" data-lang="nl">Het is al ruim 2 maanden geleden dat we voor het laatst een blog schreven. Kerst en oud & nieuw zijn alweer voorbij...</p>
+        <p class="post-excerpt" data-lang="en">It's been over 2 months since our last post. Christmas and New Year have already passed...</p>
+      </a>
+
+      <a class="post-card" href="https://www.runhaarupsidedown.nl/blog" target="_blank">
+        <p class="post-date">19 nov 2025</p>
+        <h2 class="post-title">Zachte landing</h2>
+        <p class="post-excerpt" data-lang="nl">'Slowy was toch best snel!' zei Boaz toen zijn pasgevonden slak ineens een aap in de boom ontdekte...</p>
+        <p class="post-excerpt" data-lang="en">'Slowy was actually pretty fast!' said Boaz when his newly found snail suddenly spotted a monkey in the tree...</p>
+      </a>
+
+      <a class="post-card" href="https://www.runhaarupsidedown.nl/blog" target="_blank">
+        <p class="post-date">31 okt 2025</p>
+        <h2 class="post-title">Een nieuw seizoen</h2>
+        <p class="post-excerpt" data-lang="nl">We vierden de bruiloft van lieve Indonesische vrienden. De afgelopen weken: auto verkopen, huis leegmaken, dozen inpakken...</p>
+        <p class="post-excerpt" data-lang="en">We celebrated the wedding of dear Indonesian friends. Recent weeks: selling a car, emptying the house, packing boxes...</p>
+      </a>
+
+      <a class="post-card" href="https://www.runhaarupsidedown.nl/blog" target="_blank">
+        <p class="post-date">8 okt 2025</p>
+        <h2 class="post-title">Gewoon bijzonder</h2>
+        <p class="post-excerpt" data-lang="nl">De weken vliegen voorbij. En terwijl er dagelijks heftige wereldproblemen zijn, leven wij ons gewone, bijzondere leven...</p>
+        <p class="post-excerpt" data-lang="en">The weeks fly by. While the world faces daily crises, we live our ordinary, extraordinary life...</p>
+      </a>
+
+      <a class="post-card" href="https://www.runhaarupsidedown.nl/blog" target="_blank">
+        <p class="post-date">29 aug 2025</p>
+        <h2 class="post-title">Verrassing!</h2>
+        <p class="post-excerpt" data-lang="nl">We hebben een huis! Om zo maar even met de deur in huis te vallen...</p>
+        <p class="post-excerpt" data-lang="en">We have a house! To get straight to the point...</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter" id="nieuwsbrief">
+    <div class="newsletter-inner">
+      <p class="section-label" data-lang="nl">Nieuwsbrief</p>
+      <p class="section-label" data-lang="en">Newsletter</p>
+      <h2 data-lang="nl">Blijf op de hoogte.</h2>
+      <h2 data-lang="en">Stay in the loop.</h2>
+      <p data-lang="nl">Ontvang nieuwe blogposts direct in je inbox. Geen spam — alleen echte updates van ons gezin.</p>
+      <p data-lang="en">Receive new blog posts directly in your inbox. No spam — just real updates from our family.</p>
+      <form class="newsletter-form" action="https://gmail.us12.list-manage.com/subscribe/post" method="POST" target="_blank">
+        <input type="hidden" name="u" value="MAILCHIMP_U_VALUE">
+        <input type="hidden" name="id" value="MAILCHIMP_ID_VALUE">
+        <input type="email" name="EMAIL" placeholder="jouw@email.nl" data-lang="nl" required>
+        <input type="email" name="EMAIL" placeholder="your@email.com" data-lang="en" required style="display:none">
+        <button type="submit" data-lang="nl">Aanmelden</button>
+        <button type="submit" data-lang="en" style="display:none">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="over-ons">
+    <div>
+      <p class="section-label" data-lang="nl" style="display:block; margin-bottom:1rem">Over ons</p>
+      <p class="section-label" data-lang="en" style="display:none; margin-bottom:1rem">About us</p>
+      <h2 data-lang="nl">Chris &amp; Gerrianne Runhaar</h2>
+      <h2 data-lang="en">Chris &amp; Gerrianne Runhaar</h2>
+      <p data-lang="nl">Wij zijn een Nederlands gezin dat leeft en werkt in Azië. Chris werkt in cross-cultureel leiderschap en community-ontwikkeling. Gerrianne houdt het gezin draaiende en geeft leiding aan de logistiek van het dagelijks leven.</p>
+      <p data-lang="en">We're a Dutch family living and working in Asia. Chris works in cross-cultural leadership and community development. Gerrianne keeps the family running and leads the logistics of daily life.</p>
+      <p data-lang="nl">Met vier kinderen — Sophie, Eylin, Judah en Boaz — leven we een leven dat regelmatig op zijn kop staat. Dat vinden we mooi.</p>
+      <p data-lang="en">With four children — Sophie, Eylin, Judah, and Boaz — we live a life that is regularly turned upside down. We wouldn't have it any other way.</p>
+    </div>
+    <div>
+      <p class="section-label" data-lang="nl" style="display:block; margin-bottom:1rem">Het Principe</p>
+      <p class="section-label" data-lang="en" style="display:none; margin-bottom:1rem">The Principle</p>
+      <h2 data-lang="nl">"De eerste zullen de laatste zijn."</h2>
+      <h2 data-lang="en">"The first will be last."</h2>
+      <p data-lang="nl">In Gods Koninkrijk gelden andere regels. Wie wil heersen, moet dienen. Wie wil winnen, moet verliezen. Wie zijn leven wil bewaren, moet het verliezen. Dat is het Upsidedown-principe — en het is de leidraad van alles wat wij doen.</p>
+      <p data-lang="en">In God's Kingdom, different rules apply. To lead is to serve. To win is to lose. To save your life is to lose it. That is the Upsidedown principle — and it guides everything we do.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2022–2026 Runhaar Upsidedown</span>
+    <div class="social-links">
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://wa.me/" target="_blank">WhatsApp</a>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+
+      // Handle newsletter form inputs + buttons separately
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.dataset.lang === lang ? '' : 'none';
+      });
+    }
+
+    // Init display
+    setLang('nl');
+  </script>
+
+</body>
+</html>
