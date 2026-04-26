@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nieuwsbrief — Runhaar Upsidedown</title>
+  <meta name="description" content="Schrijf je in voor de familienieuwsbrief van Chris en Gerrianne Runhaar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-nl">
+
+  <header class="site-header">
+    <a href="index.html" class="site-logo">Runhaar Upsidedown</a>
+    <nav class="site-nav">
+      <a href="blog.html" class="nav-link" data-lang="nl">Blog</a>
+      <a href="blog.html" class="nav-link" data-lang="en">Blog</a>
+      <a href="newsletter.html" class="nav-link active" data-lang="nl">Nieuwsbrief</a>
+      <a href="newsletter.html" class="nav-link active" data-lang="en">Newsletter</a>
+      <a href="about.html" class="nav-link" data-lang="nl">Over ons</a>
+      <a href="about.html" class="nav-link" data-lang="en">About us</a>
+      <div class="lang-toggle">
+        <button id="btn-nl" class="lang-btn active" onclick="setLang('nl')">NL</button>
+        <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- NEWSLETTER LAYOUT -->
+  <section class="newsletter-layout">
+    <div class="newsletter-lead">
+      <span class="eyebrow" data-lang="nl">Nieuwsbrief</span>
+      <span class="eyebrow" data-lang="en">Newsletter</span>
+      <h1 data-lang="nl">Lees mee vanuit de andere kant van de wereld.</h1>
+      <h1 data-lang="en">Read along from the other side of the world.</h1>
+      <p data-lang="nl">Onze familienieuwsbrief verschijnt een paar keer per jaar. Daarin delen we eerlijk over wat er speelt in ons gezin, in het werk, en in onze gebeden.</p>
+      <p data-lang="en">Our family newsletter is published a few times a year. In it we share honestly about what's happening in our family, in our work, and in our prayers.</p>
+      <p data-lang="nl">Geen automatisch gegenereerde content. Geen verkooppraatjes. Alleen echte verhalen van echte mensen die proberen trouw te zijn aan een roeping die soms op zijn kop staat.</p>
+      <p data-lang="en">No auto-generated content. No sales pitch. Just real stories from real people trying to be faithful to a calling that is sometimes upside down.</p>
+      <p data-lang="nl">Je kunt je op elk moment uitschrijven. We zijn blij als je meeleest — en dankbaar als je ook bidt.</p>
+      <p data-lang="en">You can unsubscribe at any time. We are glad when you read along — and grateful when you pray along too.</p>
+    </div>
+
+    <div class="newsletter-box">
+      <h2 data-lang="nl">Schrijf je in</h2>
+      <h2 data-lang="en">Subscribe</h2>
+
+      <form id="nl-form" onsubmit="handleSubscribe(event)">
+        <div class="form-group">
+          <label class="form-label" data-lang="nl" for="email-field">E-mailadres</label>
+          <label class="form-label" data-lang="en" for="email-field">Email address</label>
+          <input
+            class="form-input"
+            type="email"
+            id="email-field"
+            name="email"
+            autocomplete="email"
+            required>
+        </div>
+
+        <button class="btn-primary" type="submit">
+          <span data-lang="nl">Aanmelden</span>
+          <span data-lang="en">Subscribe</span>
+        </button>
+
+        <p class="form-note" data-lang="nl">Geen spam. Je gegevens worden alleen gebruikt voor deze nieuwsbrief.</p>
+        <p class="form-note" data-lang="en">No spam. Your data is only used for this newsletter.</p>
+
+        <div class="form-result" id="form-result"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ARCHIVE NOTE -->
+  <section class="newsletter-archive">
+    <div class="section-head" style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
+      <span class="section-head-label" data-lang="nl">Vorige edities</span>
+      <span class="section-head-label" data-lang="en">Past editions</span>
+    </div>
+    <p class="archive-note" data-lang="nl">
+      Onze eerdere nieuwsbrieven zijn te lezen op <a href="https://www.runhaarupsidedown.nl" target="_blank" rel="noopener" style="color: var(--terra); text-decoration: underline; text-underline-offset: 3px;">runhaarupsidedown.nl</a>.
+    </p>
+    <p class="archive-note" data-lang="en">
+      Our earlier newsletters can be found at <a href="https://www.runhaarupsidedown.nl" target="_blank" rel="noopener" style="color: var(--terra); text-decoration: underline; text-underline-offset: 3px;">runhaarupsidedown.nl</a>.
+    </p>
+  </section>
+
+  <!-- NEWSLETTER BAND (prayer CTA) -->
+  <section class="newsletter-band">
+    <span class="eyebrow" data-lang="nl">Bid mee</span>
+    <span class="eyebrow" data-lang="en">Pray along</span>
+    <h2 data-lang="nl">Je gebed is het meest waardevolle wat je kunt geven.</h2>
+    <h2 data-lang="en">Your prayer is the most valuable thing you can give.</h2>
+    <p data-lang="nl">Ons werk staat of valt met mensen die bidden. Je hoeft er niet bij te zijn — gebed overstijgt afstand. Schrijf je in voor de nieuwsbrief om te weten waarvoor je kunt bidden.</p>
+    <p data-lang="en">Our work depends on people who pray. You don't have to be there — prayer transcends distance. Subscribe to the newsletter to know what to pray for.</p>
+  </section>
+
+  <footer class="site-footer">
+    <span class="footer-brand">Runhaar Upsidedown</span>
+    <div class="footer-links">
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <span class="footer-copy">&copy; 2022–2026 Chris &amp; Gerrianne Runhaar</span>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.className = 'lang-' + lang;
+      document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+      localStorage.setItem('ruu-lang', lang);
+    }
+
+    async function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('email-field').value;
+      const result = document.getElementById('form-result');
+      const btn = e.target.querySelector('.btn-primary');
+      const isEn = document.body.classList.contains('lang-en');
+
+      btn.disabled = true;
+      btn.innerHTML = isEn ? 'Submitting…' : 'Aanmelden…';
+
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const data = await res.json();
+
+        result.style.display = 'block';
+        result.className = 'form-result ' + (data.ok ? 'success' : 'error');
+
+        if (data.ok) {
+          result.textContent = data.already
+            ? (isEn ? 'You\'re already subscribed — thank you!' : 'Je bent al aangemeld — bedankt!')
+            : (isEn ? 'Subscribed! We\'ll be in touch.' : 'Aangemeld! We houden je op de hoogte.');
+        } else {
+          result.textContent = data.error || (isEn ? 'Something went wrong. Please try again.' : 'Er ging iets mis. Probeer het opnieuw.');
+        }
+      } catch {
+        result.style.display = 'block';
+        result.className = 'form-result error';
+        result.textContent = isEn ? 'Something went wrong. Please try again.' : 'Er ging iets mis. Probeer het opnieuw.';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = isEn
+          ? '<span data-lang="en">Subscribe</span>'
+          : '<span data-lang="nl">Aanmelden</span>';
+      }
+    }
+
+    const savedLang = localStorage.getItem('ruu-lang') || 'nl';
+    setLang(savedLang);
+  </script>
+
+</body>
+</html>
